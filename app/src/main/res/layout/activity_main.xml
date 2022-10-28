@@ -33,7 +33,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="47dp"
         android:text="@string/priimek"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
@@ -67,9 +67,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="262dp"
+        android:layout_marginBottom="40dp"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/gumb_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -77,13 +77,11 @@
         android:id="@+id/gumb_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginBottom="20dp"
         android:text="Izberi datum"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintBottom_toTopOf="@+id/gumb_prihod"
+        app:layout_constraintStart_toStartOf="@+id/gumb_prihod" />
 
     <TextView
         android:id="@+id/textView6"
@@ -95,13 +93,66 @@
         app:layout_constraintStart_toEndOf="@+id/gumb_date" />
 
     <Button
+        android:id="@+id/gumb_prihod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="106dp"
+        android:text="Ura prihoda"
+        app:backgroundTint="@color/gumb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/gumb_odhod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="32dp"
+        android:text="Ura odhoda"
+        app:backgroundTint="@color/gumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/gumb_prikaz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Prikaži"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonPoslji" />
+
+    <Button
         android:id="@+id/buttonPoslji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="69dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/poslji_gumb"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gumb_prikaz"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/prihod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="2dp"
+        android:text="Izbrana ura"
+        app:layout_constraintStart_toStartOf="@+id/gumb_prihod"
+        app:layout_constraintTop_toBottomOf="@+id/gumb_prihod" />
+
+    <TextView
+        android:id="@+id/odhod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Izbrana ura"
+        app:layout_constraintStart_toStartOf="@+id/gumb_odhod"
+        app:layout_constraintTop_toBottomOf="@+id/gumb_odhod" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
