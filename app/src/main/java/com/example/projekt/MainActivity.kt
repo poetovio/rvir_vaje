@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
 
         val spolSpinner = findViewById<Spinner>(R.id.spinner2)
 
-
-
         val gumbPoslji = findViewById<Button>(R.id.buttonPoslji)
 
         spolSpinner.adapter = ArrayAdapter.createFromResource(
