@@ -46,6 +46,19 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             TimePickerDialog(this, timestamp, koledarPrihod.get(Calendar.HOUR_OF_DAY), koledarPrihod.get(Calendar.MINUTE), true).show()
         }
 
+        findViewById<Button>(R.id.gumb_odhod).setOnClickListener {
+            val koledarOdhod = Calendar.getInstance()
+
+            val timestamp = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                koledarOdhod.set(Calendar.HOUR_OF_DAY, hour)
+                koledarOdhod.set(Calendar.MINUTE, minute)
+
+                findViewById<TextView>(R.id.odhod).text = SimpleDateFormat("HH:mm").format(koledarOdhod.time)
+            }
+
+            TimePickerDialog(this, timestamp, koledarOdhod.get(Calendar.HOUR_OF_DAY), koledarOdhod.get(Calendar.MINUTE), true).show()
+        }
+
         spolSpinner.adapter = ArrayAdapter.createFromResource(
             this,
             R.array.spol,
