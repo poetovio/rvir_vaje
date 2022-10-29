@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
         val gumbPoslji = findViewById<Button>(R.id.buttonPoslji)
 
+        val gumbPrikazi = findViewById<Button>(R.id.gumb_prikaz)
+
         findViewById<Button>(R.id.gumb_prihod).setOnClickListener {
             val koledarPrihod = Calendar.getInstance()
 
@@ -76,6 +78,15 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             intent.putExtra("odhod", findViewById<TextView>(R.id.odhod).text.toString())
 
             startActivity(intent)
+        }
+
+        gumbPrikazi.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    recycle::class.java
+                )
+            )
         }
     }
 

@@ -11,6 +11,7 @@
     <string name="prihod">Ura prihoda</string>
     <string name="odhod">Ura odhoda</string>
     <string name="nazaj">Nazaj</string>
+    <string name="zaposleni">Vpisani zaposleni</string>
     <string-array name="spol">
         <item>Ženski</item>
         <item>Moški</item>
