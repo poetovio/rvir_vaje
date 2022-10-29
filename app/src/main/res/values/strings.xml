@@ -10,6 +10,7 @@
     <string name="datum">Datum rojstva</string>
     <string name="prihod">Ura prihoda</string>
     <string name="odhod">Ura odhoda</string>
+    <string name="nazaj">Nazaj</string>
     <string-array name="spol">
         <item>Moški</item>
         <item>Ženski</item>
