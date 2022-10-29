@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="78dp"
-        android:text="@string/ime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="wrap_content"
@@ -29,21 +19,12 @@
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:text="@string/priimek"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
-
     <EditText
         android:id="@+id/editTextTextPersonName4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="24dp"
         android:autofillHints="@string/priimek"
         android:ems="10"
         android:inputType="textPersonName"
@@ -53,13 +34,33 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/ime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:text="@string/priimek"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/spol"
         app:layout_constraintBottom_toTopOf="@+id/spinner2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintStart_toStartOf="@+id/spinner2" />
 
     <Spinner
         android:id="@+id/spinner2"
@@ -67,10 +68,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="32dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/gumb_date"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -78,9 +80,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
-        android:layout_marginBottom="20dp"
         android:text="Izberi datum"
-        app:layout_constraintBottom_toTopOf="@+id/gumb_prihod"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/gumb_prihod" />
 
     <TextView
@@ -88,8 +89,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginBottom="36dp"
         android:text="Izbran datum"
-        app:layout_constraintBaseline_toBaselineOf="@+id/gumb_date"
+        app:layout_constraintBottom_toTopOf="@+id/gumb_odhod"
         app:layout_constraintStart_toEndOf="@+id/gumb_date" />
 
     <Button
@@ -97,22 +99,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
-        android:layout_marginBottom="106dp"
+        android:layout_marginTop="21dp"
         android:text="Ura prihoda"
         app:backgroundTint="@color/gumb"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gumb_date" />
 
     <Button
         android:id="@+id/gumb_odhod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="105dp"
         android:text="Ura odhoda"
         app:backgroundTint="@color/gumb"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/gumb_prikaz"
@@ -129,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/poslji_gumb"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -141,7 +143,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="1dp"
         android:text="Izbrana ura"
         app:layout_constraintStart_toStartOf="@+id/gumb_prihod"
         app:layout_constraintTop_toBottomOf="@+id/gumb_prihod" />
@@ -150,9 +152,9 @@
         android:id="@+id/odhod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="30dp"
         android:text="Izbrana ura"
-        app:layout_constraintStart_toStartOf="@+id/gumb_odhod"
+        app:layout_constraintEnd_toEndOf="@+id/gumb_odhod"
         app:layout_constraintTop_toBottomOf="@+id/gumb_odhod" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import java.sql.Timestamp
@@ -65,12 +66,16 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item
         )
         gumbPoslji.setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    Povzetek::class.java
-                )
-            )
+            val intent = Intent(this, Povzetek::class.java)
+
+            intent.putExtra("ime", findViewById<EditText>(R.id.editTextTextPersonName3).text.toString())
+            intent.putExtra("priimek", findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
+            intent.putExtra("spol", findViewById<Spinner>(R.id.spinner2).selectedItem.toString())
+            intent.putExtra("datum", findViewById<TextView>(R.id.textView6).text.toString())
+            intent.putExtra("prihod", findViewById<TextView>(R.id.prihod).text.toString())
+            intent.putExtra("odhod", findViewById<TextView>(R.id.odhod).text.toString())
+
+            startActivity(intent)
         }
     }
 

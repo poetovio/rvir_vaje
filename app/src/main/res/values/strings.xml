@@ -12,7 +12,7 @@
     <string name="odhod">Ura odhoda</string>
     <string name="nazaj">Nazaj</string>
     <string-array name="spol">
-        <item>Moški</item>
         <item>Ženski</item>
+        <item>Moški</item>
     </string-array>
 </resources>
