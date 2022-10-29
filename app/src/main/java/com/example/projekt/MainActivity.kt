@@ -1,6 +1,8 @@
 package com.example.projekt
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     private val koledar = Calendar.getInstance()
     private val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN)
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,6 +32,19 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         val spolSpinner = findViewById<Spinner>(R.id.spinner2)
 
         val gumbPoslji = findViewById<Button>(R.id.buttonPoslji)
+
+        findViewById<Button>(R.id.gumb_prihod).setOnClickListener {
+            val koledarPrihod = Calendar.getInstance()
+
+            val timestamp = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                koledarPrihod.set(Calendar.HOUR_OF_DAY, hour)
+                koledarPrihod.set(Calendar.MINUTE, minute)
+
+                findViewById<TextView>(R.id.prihod).text = SimpleDateFormat("HH:mm").format(koledarPrihod.time)
+            }
+
+            TimePickerDialog(this, timestamp, koledarPrihod.get(Calendar.HOUR_OF_DAY), koledarPrihod.get(Calendar.MINUTE), true).show()
+        }
 
         spolSpinner.adapter = ArrayAdapter.createFromResource(
             this,
