@@ -16,4 +16,13 @@
         <item>Ženski</item>
         <item>Moški</item>
     </string-array>
+
+    <string-array name="zaposleniVpisani">
+        <item>Robert Pešut</item>
+        <item>Saša Lendero</item>
+        <item>Buba Corelli</item>
+        <item>Martin Krpan</item>
+        <item>Jala Brat</item>
+        <item>Marko Žerjal</item>
+    </string-array>
 </resources>
