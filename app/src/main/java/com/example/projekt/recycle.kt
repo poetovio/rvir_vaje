@@ -1,12 +1,11 @@
 package com.example.projekt
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.projekt.databinding.ActivityMainBinding
 import com.example.projekt.databinding.ActivityRecycleBinding
-import javax.sql.DataSource
 
 class recycle : AppCompatActivity() {
 
@@ -18,10 +17,16 @@ class recycle : AppCompatActivity() {
         binding = ActivityRecycleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val zaposleniList = DataSource(this).getZaposleniList()
+        val zaposleniList = intent.getStringArrayExtra("vneseniZaposleni")
 
         val recyclerView = binding.recajkler
-        recyclerView.adapter = ZaposlenAdapter(zaposleniList)
+
+        val adapter = ZaposlenAdapter(zaposleniList)
+
+        recyclerView.adapter = adapter
+
+        binding.recajkler.adapter?.notifyDataSetChanged()
+
 
         findViewById<Button>(R.id.vracanjeDomov).setOnClickListener {
             startActivity(

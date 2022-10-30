@@ -6,6 +6,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.DatePicker
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         val gumbPoslji = findViewById<Button>(R.id.buttonPoslji)
 
         val gumbPrikazi = findViewById<Button>(R.id.gumb_prikaz)
+
+        var vneseniZaposleni = DataSource(this).getZaposleniList()
 
         findViewById<Button>(R.id.gumb_prihod).setOnClickListener {
             val koledarPrihod = Calendar.getInstance()
@@ -70,6 +73,10 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         gumbPoslji.setOnClickListener {
             val intent = Intent(this, Povzetek::class.java)
 
+            vneseniZaposleni += (findViewById<EditText>(R.id.editTextTextPersonName3).text.toString() + " " + findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
+
+            vneseniZaposleni.forEach { Log.d("TAG", it) }
+
             intent.putExtra("ime", findViewById<EditText>(R.id.editTextTextPersonName3).text.toString())
             intent.putExtra("priimek", findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
             intent.putExtra("spol", findViewById<Spinner>(R.id.spinner2).selectedItem.toString())
@@ -81,12 +88,11 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         }
 
         gumbPrikazi.setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    recycle::class.java
-                )
-            )
+            val intent = Intent(this, recycle::class.java)
+
+            intent.putExtra("vneseniZaposleni", vneseniZaposleni)
+
+            startActivity(intent)
         }
     }
 
