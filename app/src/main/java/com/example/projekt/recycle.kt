@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.projekt.databinding.ActivityRecycleBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 class recycle : AppCompatActivity() {
 
@@ -35,6 +39,12 @@ class recycle : AppCompatActivity() {
                     MainActivity::class.java
                 )
             )
+        }
+
+        findViewById<Button>(R.id.testBrisi).setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                Baza.getDatabase(this@recycle).uporabnikDao().brisi()
+            }
         }
     }
 }

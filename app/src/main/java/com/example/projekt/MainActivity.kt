@@ -7,12 +7,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,6 +19,8 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private val koledar = Calendar.getInstance()
     private val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN)
+
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,9 +73,15 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         gumbPoslji.setOnClickListener {
             val intent = Intent(this, Povzetek::class.java)
 
+            val ime = findViewById<EditText>(R.id.editTextTextPersonName3).text.toString()
+            val priimek = findViewById<EditText>(R.id.editTextTextPersonName4).text.toString()
+
             vneseniZaposleni += (findViewById<EditText>(R.id.editTextTextPersonName3).text.toString() + " " + findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
 
-            vneseniZaposleni.forEach { Log.d("TAG", it) }
+            coroutineScope.launch {
+                Baza.getDatabase(this@MainActivity).uporabnikDao().insertAll(Uporabnik(0, ime, priimek))
+                Toast.makeText(applicationContext, "Uporabnik " + ime + " " + priimek + " je bil uspešno dodan v bazo.", Toast.LENGTH_SHORT).show()
+            }
 
             intent.putExtra("ime", findViewById<EditText>(R.id.editTextTextPersonName3).text.toString())
             intent.putExtra("priimek", findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
@@ -91,6 +97,10 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             val intent = Intent(this, recycle::class.java)
 
             intent.putExtra("vneseniZaposleni", vneseniZaposleni)
+
+            coroutineScope.launch {
+                Log.d("baza", Baza.getDatabase(this@MainActivity).uporabnikDao().getAll().toString())
+            }
 
             startActivity(intent)
         }
