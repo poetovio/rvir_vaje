@@ -1,5 +1,7 @@
 package com.example.projekt
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,6 +19,30 @@ class ZaposlenAdapter(val zaposleniList: List<Uporabnik>?): RecyclerView.Adapter
 
             zaposleniTextView.setOnClickListener {
                 Log.d("uporabnik", "Kliknili ste na uporabnika " + zaposleniTextView.text)
+                val dialog = AlertDialog.Builder(zaposleniTextView.context)
+                dialog.setTitle("Uporabnik")
+
+                val builder = java.lang.StringBuilder()
+
+                val ime = name.ime
+                val priimek = name.priimek
+                val spol = name.spol
+                val datum = name.datumRojstva
+                val prihod = name.prihod
+                val odhod = name.odhod
+
+                builder.append("Ime -> $ime\n")
+                    .append("Priimek -> $priimek\n")
+                    .append("Spol -> $spol\n")
+                    .append("Datum rojstva -> $datum\n")
+                    .append("Ura prihoda -> $prihod\n")
+                    .append("Ura odhoda -> $odhod\n")
+
+                dialog.setMessage(builder.toString())
+
+                dialog.setPositiveButton("Zapri", DialogInterface.OnClickListener { _, _ -> })
+                dialog.show()
+
             }
         }
     }
