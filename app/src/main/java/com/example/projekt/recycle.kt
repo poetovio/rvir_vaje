@@ -1,14 +1,13 @@
 package com.example.projekt
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import com.example.projekt.databinding.ActivityRecycleBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class recycle : AppCompatActivity() {
@@ -21,15 +20,25 @@ class recycle : AppCompatActivity() {
         binding = ActivityRecycleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val zaposleniList = intent.getStringArrayExtra("vneseniZaposleni")
+        var bazaLjudje: List<Uporabnik>? = null
+        val zaposleni = arrayOf(String)
 
-        val recyclerView = binding.recajkler
+        CoroutineScope(Dispatchers.Main).launch {
+            bazaLjudje = Baza.getDatabase(this@recycle).uporabnikDao().getAll()
+            bazaLjudje?.forEach { i -> zaposleni += (i.ime + " " + i.priimek) }
+            Log.d("zaposleni", zaposleni.contentToString())
 
-        val adapter = ZaposlenAdapter(zaposleniList)
+            val recyclerView = binding.recajkler
 
-        recyclerView.adapter = adapter
+            val adapter = ZaposlenAdapter(bazaLjudje)
 
-        binding.recajkler.adapter?.notifyDataSetChanged()
+            recyclerView.adapter = adapter
+
+            binding.recajkler.adapter?.notifyDataSetChanged()
+        }
+
+
+
 
 
         findViewById<Button>(R.id.vracanjeDomov).setOnClickListener {
@@ -47,4 +56,8 @@ class recycle : AppCompatActivity() {
             }
         }
     }
+}
+
+private operator fun <T> Array<T>.plusAssign(s: String) {
+
 }

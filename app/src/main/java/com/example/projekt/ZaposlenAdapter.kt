@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projekt.databinding.ZaposlenBinding
 
-class ZaposlenAdapter(val zaposleniList: Array<String>?): RecyclerView.Adapter<ZaposlenAdapter.ZaposleniViewHolder>() {
+class ZaposlenAdapter(val zaposleniList: List<Uporabnik>?): RecyclerView.Adapter<ZaposlenAdapter.ZaposleniViewHolder>() {
 
     class ZaposleniViewHolder(binding: ZaposlenBinding): RecyclerView.ViewHolder(binding.root) {
         private val zaposleniTextView = binding.imeRecikler
 
-        fun bind(name: String) {
-            zaposleniTextView.text = name
+        fun bind(name: Uporabnik) {
+            zaposleniTextView.text = name.ime + " " + name.priimek
         }
     }
 
