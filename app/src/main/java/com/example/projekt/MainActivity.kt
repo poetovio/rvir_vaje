@@ -98,10 +98,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
             intent.putExtra("vneseniZaposleni", vneseniZaposleni)
 
-            coroutineScope.launch {
-                Log.d("baza", Baza.getDatabase(this@MainActivity).uporabnikDao().getAll().toString())
-            }
-
             startActivity(intent)
         }
     }
