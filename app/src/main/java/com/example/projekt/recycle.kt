@@ -25,7 +25,6 @@ class recycle : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {
             bazaLjudje = Baza.getDatabase(this@recycle).uporabnikDao().getAll()
-            bazaLjudje?.forEach { i -> zaposleni += (i.ime + " " + i.priimek) }
 
             val recyclerView = binding.recajkler
 
