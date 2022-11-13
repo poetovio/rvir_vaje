@@ -75,15 +75,19 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
             val ime = findViewById<EditText>(R.id.editTextTextPersonName3).text.toString()
             val priimek = findViewById<EditText>(R.id.editTextTextPersonName4).text.toString()
+            val spol = findViewById<Spinner>(R.id.spinner2).selectedItem.toString()
+            val datum = findViewById<TextView>(R.id.textView6).text.toString()
+            val prihod = findViewById<TextView>(R.id.prihod).text.toString()
+            val odhod = findViewById<TextView>(R.id.odhod).text.toString()
 
             vneseniZaposleni += (findViewById<EditText>(R.id.editTextTextPersonName3).text.toString() + " " + findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
 
             coroutineScope.launch {
-                Baza.getDatabase(this@MainActivity).uporabnikDao().insertAll(Uporabnik(0, ime, priimek))
+                Baza.getDatabase(this@MainActivity).uporabnikDao().insertAll(Uporabnik(0, ime, priimek, spol, datum, prihod, odhod))
                 Toast.makeText(applicationContext, "Uporabnik " + ime + " " + priimek + " je bil uspešno dodan v bazo.", Toast.LENGTH_SHORT).show()
             }
 
-            intent.putExtra("ime", findViewById<EditText>(R.id.editTextTextPersonName3).text.toString())
+            intent.putExtra("ime", ime)
             intent.putExtra("priimek", findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
             intent.putExtra("spol", findViewById<Spinner>(R.id.spinner2).selectedItem.toString())
             intent.putExtra("datum", findViewById<TextView>(R.id.textView6).text.toString())

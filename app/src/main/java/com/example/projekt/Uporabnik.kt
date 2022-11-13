@@ -11,5 +11,13 @@ data class Uporabnik(
     @ColumnInfo(name = "ime")
     val ime: String?,
     @ColumnInfo(name = "priimek")
-    val priimek: String?
+    val priimek: String?,
+    @ColumnInfo(name = "spol")
+    val spol: String?,
+    @ColumnInfo(name = "datum")
+    val datumRojstva: String?,
+    @ColumnInfo(name = "prihod")
+    val prihod: String?,
+    @ColumnInfo(name = "odhod")
+    val odhod: String?
 )

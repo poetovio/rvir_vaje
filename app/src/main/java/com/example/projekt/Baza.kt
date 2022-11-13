@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database (
     entities = arrayOf(Uporabnik::class),
-    version = 1
+    version = 2
 )
 
 abstract class Baza: RoomDatabase() {
@@ -28,7 +28,7 @@ abstract class Baza: RoomDatabase() {
                     context.applicationContext,
                     Baza::class.java,
                     "baza_uporabnikov"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }
