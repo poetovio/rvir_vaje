@@ -16,9 +16,6 @@ interface UporabnikDao {
     @Query("SELECT * FROM uporabnik WHERE ime LIKE :ime AND priimek LIKE :priimek LIMIT 1")
     suspend fun findByName(ime: String, priimek: String): Uporabnik
 
-    @Query("DELETE FROM uporabnik")
-    suspend fun brisi()
-
     @Insert
     suspend fun insertAll(vararg uporabniki: Uporabnik)
 

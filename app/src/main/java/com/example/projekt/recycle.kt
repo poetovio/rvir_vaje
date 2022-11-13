@@ -47,12 +47,6 @@ class recycle : AppCompatActivity() {
                 )
             )
         }
-
-        findViewById<Button>(R.id.testBrisi).setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                Baza.getDatabase(this@recycle).uporabnikDao().brisi()
-            }
-        }
     }
 }
 

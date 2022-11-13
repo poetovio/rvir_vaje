@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
         val gumbPrikazi = findViewById<Button>(R.id.gumb_prikaz)
 
-        var vneseniZaposleni = DataSource(this).getZaposleniList()
-
         findViewById<Button>(R.id.gumb_prihod).setOnClickListener {
             val koledarPrihod = Calendar.getInstance()
 
@@ -80,8 +78,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             val prihod = findViewById<TextView>(R.id.prihod).text.toString()
             val odhod = findViewById<TextView>(R.id.odhod).text.toString()
 
-            vneseniZaposleni += (findViewById<EditText>(R.id.editTextTextPersonName3).text.toString() + " " + findViewById<EditText>(R.id.editTextTextPersonName4).text.toString())
-
             coroutineScope.launch {
                 Baza.getDatabase(this@MainActivity).uporabnikDao().insertAll(Uporabnik(0, ime, priimek, spol, datum, prihod, odhod))
                 Toast.makeText(applicationContext, "Uporabnik " + ime + " " + priimek + " je bil uspešno dodan v bazo.", Toast.LENGTH_SHORT).show()
@@ -99,8 +95,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
         gumbPrikazi.setOnClickListener {
             val intent = Intent(this, recycle::class.java)
-
-            intent.putExtra("vneseniZaposleni", vneseniZaposleni)
 
             startActivity(intent)
         }

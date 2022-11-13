@@ -11,14 +11,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="42dp"
         android:layout_marginEnd="41dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="37dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/testBrisi"
+        app:layout_constraintBottom_toTopOf="@+id/vracanjeDomov"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/textView7"
@@ -26,7 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginTop="62dp"
+        android:layout_marginBottom="23dp"
         android:text="@string/zaposleni"
+        app:layout_constraintBottom_toTopOf="@+id/recajkler"
         app:layout_constraintStart_toStartOf="@+id/recajkler"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,19 +35,11 @@
         android:id="@+id/vracanjeDomov"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="64dp"
         android:text="@string/nazaj"
-        app:layout_constraintBottom_toBottomOf="@+id/testBrisi"
-        app:layout_constraintEnd_toStartOf="@+id/testBrisi" />
-
-    <Button
-        android:id="@+id/testBrisi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="59dp"
-        android:text="Brisi"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recajkler" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
